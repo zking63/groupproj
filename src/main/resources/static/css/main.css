@@ -1,0 +1,53 @@
+body{
+	background-color: #90a4ae;
+	padding-top: 0px;
+	color: #263238;
+}
+body button{
+	border: 0px;
+	background-color: #455a64;
+	opacity: 50%;
+	color: white;
+}
+body button:hover{
+	background-color: white;
+	color: #455a64;
+}
+body button a{
+	color: white;
+}
+body button a:hover{
+	color: #455a64;
+}
+.container {
+	margin-left: 94px;
+	margin-top: 10px;
+}
+.user-form {
+	display: inline-block;
+	width: 45%;
+	vertical-align: middle;
+	margin: 20px;
+	border: 1px solid white;
+	padding: 15px;
+	color: white;
+}
+
+.table-hover a{
+	color: white;
+	font-style: bold;
+	font-size: 17px;
+}
+.wrapper{
+	width: 1000px;
+	margin-left: 10%;
+}
+.user-form{
+	margin-left: 25%;
+	width: 50%;
+}
+.date-form{
+	margin-left: 30%;
+	margin-bottom: 10px;
+	width: 50%;
+}
