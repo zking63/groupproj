@@ -27,7 +27,7 @@ public class UserController {
 	
 	@RequestMapping("/")
 	public String index(@ModelAttribute("user")User user) {
-		return "home.jsp";
+		return "loginreg.jsp";
 	}
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session) {
