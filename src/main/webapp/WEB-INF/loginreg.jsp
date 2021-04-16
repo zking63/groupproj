@@ -42,7 +42,7 @@
 	    	<p><c:out value="${ error }" /></p>
 		    <h1>Login</h1>
 	        <p>
-	            <label type="email" for="email">Email</label>
+	            <label type="text" for="email">Email</label>
 	            <input type="text" id="email" name="email"/>
 	        </p>
 	        <p>

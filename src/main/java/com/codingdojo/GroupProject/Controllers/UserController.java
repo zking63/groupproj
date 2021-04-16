@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import com.codingdojo.GroupProject.services.UserService;
 import com.codingdojo.GroupProject.validation.UserValidation;
 
 
-
+@Controller
 public class UserController {
 	@Autowired
 	private UserService uservice;
@@ -26,7 +27,7 @@ public class UserController {
 	
 	@RequestMapping("/")
 	public String index(@ModelAttribute("user")User user) {
-		return "loginreg.jsp";
+		return "home.jsp";
 	}
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session) {
