@@ -12,8 +12,16 @@
     <title>Home Page</title>
 </head>
 <body>
+ <div class="navbar">
+ 	<h1 class="titles"><a href="/home">Sporting events</a></h1>
+    <ul class="navbarmenu">
+        <li class="main"><a href="/home">Home</a>
+        </li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</div>
 <div class="container">
-	<h2>hi ${user.firstName}</h2>
+
 </div>
 </body>
 </html>

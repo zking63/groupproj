@@ -13,6 +13,19 @@
 </head>
 <body>
 	<div class="container">
+		    <form class="user-form" method="post" action="/login">
+	    	<p><c:out value="${ error }" /></p>
+		    <h1>Login</h1>
+	        <p>
+	            <label type="text" for="email">Email</label>
+	            <input type="text" id="email" name="email"/>
+	        </p>
+	        <p>
+	            <label for="password">Password</label>
+	            <input type="password" id="password" name="password"/>
+	        </p>
+	        <input type="submit" value="Login!"/>
+	    </form> 
 			<p><form:errors path="user.*"/></p>
 	   	    <form:form class="user-form" method="POST" action="/" modelAttribute="user">
 	   	    <h1>Register!</h1>
@@ -42,19 +55,6 @@
 	        </p>
 	        <input type="submit" value="Register!"/>
 	    </form:form>
-	    <form class="user-form" method="post" action="/login">
-	    	<p><c:out value="${ error }" /></p>
-		    <h1>Login</h1>
-	        <p>
-	            <label type="text" for="email">Email</label>
-	            <input type="text" id="email" name="email"/>
-	        </p>
-	        <p>
-	            <label for="password">Password</label>
-	            <input type="password" id="password" name="password"/>
-	        </p>
-	        <input type="submit" value="Login!"/>
-	    </form> 
 	</div>   
 </body>
 </html>
