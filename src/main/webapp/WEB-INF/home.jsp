@@ -7,9 +7,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/main.css" />
+    <title>Home Page</title>
 </head>
 <body>
-<h2>hi</h2>
+<div class="container">
+	<h2>hi ${user.firstName}</h2>
+</div>
 </body>
 </html>
