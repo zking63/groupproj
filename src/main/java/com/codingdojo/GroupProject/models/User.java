@@ -1,12 +1,15 @@
 package com.codingdojo.GroupProject.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -41,6 +44,10 @@ public class User {
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;
+	@ManyToMany(mappedBy="attendees")
+	private List<Event> scheduledEvents;
+	@OneToMany(mappedBy="eventCreator")
+	private List<Event> createdEvents;
 	
 	public User() {
 		
@@ -116,6 +123,22 @@ public class User {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public List<Event> getScheduledEvents() {
+		return scheduledEvents;
+	}
+
+	public void setScheduledEvents(List<Event> scheduledEvents) {
+		this.scheduledEvents = scheduledEvents;
+	}
+
+	public List<Event> getCreatedEvents() {
+		return createdEvents;
+	}
+
+	public void setCreatedEvents(List<Event> createdEvents) {
+		this.createdEvents = createdEvents;
 	}
 
 	@PrePersist
