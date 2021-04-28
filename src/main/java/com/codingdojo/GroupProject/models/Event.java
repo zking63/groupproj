@@ -26,6 +26,8 @@ public class Event {
 	@NotBlank
 	private String name;
 	@NotBlank
+	private String description;
+	@NotBlank
 	private String location;
 	private int maxCapacity;
 	@NotBlank
@@ -62,6 +64,14 @@ public class Event {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getLocation() {
