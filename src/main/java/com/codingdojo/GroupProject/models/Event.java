@@ -17,6 +17,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="events")
 public class Event {
@@ -30,7 +32,7 @@ public class Event {
 	@NotBlank
 	private String location;
 	private int maxCapacity;
-	@NotBlank
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	private Date eventDate;
 	@ManyToMany
 	@JoinTable(

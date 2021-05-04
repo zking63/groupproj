@@ -55,7 +55,7 @@ public class EventController {
 		if(session.getAttribute("user_id") == null) {
 			return "redirect:/login";
 		} else {
-			return "createEvent.jsp";
+			return "create.jsp";
 		}
 	}
 	
@@ -63,11 +63,23 @@ public class EventController {
 	public String postEvent(@Valid @ModelAttribute("event") Event event, BindingResult result, HttpSession session, Model model) {
 		if(result.hasErrors()) {
 			model.addAttribute("event", event);
-			return "createEvent.jsp";
+			return "create.jsp";
 		} else {
 			User creator = uService.findUserbyId((Long)session.getAttribute("user_id"));
 			Event newEvent = eService.createEvent(creator, event);
 			return "redirect:/events/" + newEvent.getId();
 		}
+	}
+	
+	@GetMapping("/events/remove/{index}")
+	public String removeUser(@PathVariable("index") Long id, HttpSession session) {
+		eService.removeUser(uService.findUserbyId((Long)session.getAttribute("user_id")), id);
+		return "redirect:/dashboard";
+	}
+	
+	@GetMapping("/events/join/{index}")
+	public String joinEvent(@PathVariable("index") Long id, HttpSession session) {
+		eService.joinEvent(uService.findUserbyId((Long)session.getAttribute("user_id")), id);
+		return "redirect:/dashboard";
 	}
 }

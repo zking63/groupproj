@@ -26,4 +26,20 @@ public class EventService {
 		event.setEventCreator(creator);
 		return eRepo.save(event);
 	}
+	
+	public void removeUser(User user, Long eventId) {
+		Event event = eRepo.findById(eventId).get();
+		List<User> attendees = event.getAttendees();
+		attendees.remove(user);
+		event.setAttendees(attendees);
+		eRepo.save(event);
+	}
+	
+	public void joinEvent(User user, Long eventId) {
+		Event event = eRepo.findById(eventId).get();
+		List<User> attendees = event.getAttendees();
+		attendees.add(user);
+		event.setAttendees(attendees);
+		eRepo.save(event);
+	}
 }
