@@ -16,13 +16,13 @@
  	<h1 class="titles"><a href="/home">Sporting events</a></h1>
     <ul class="navbarmenu">
         <li class="main"><a href="/dashboard">Home</a></li>
-        <li class="main"><a href="/event/new">New</a></li>
+        <li class="main"><a href="/events/new">New</a></li>
         <li><a href="/logout">Logout</a></li>
     </ul>
 </div>
 <div class="container">
 	<h1>Welcome <c:out value="${user.firstName}"/></h1>
-	<p>Today in <%= (new java.util.Date()).toLocaleString() %> and you have <c:out value="${user.scheduledEvents.size()}"/>
+	<p>Today is <%= (new java.util.Date()).toLocaleString() %> and you have <c:out value="${user.scheduledEvents.size()}"/>
 	today.</p>
 	<div class= "container">
 		<table class="table table-dark table-hover">
@@ -33,16 +33,14 @@
 					<th>Date</th>
 				</tr>
 				<tbody>
-					<c:when test="${event.attendees.contains(user)}">
-					<c:out value="${event}" var ="event">
+					<c:forEach items="${user.scheduledEvents}" var ="event">
 					<tr>
-						<td><a href= "/event/${event.index}"></a>${event.name}</td>
+						<td><a href= "/events/${event.id}"></a>${event.name}</td>
 						<td>${event.location}</td>
-						<td>${event.attendees.size()}/${event.capacity}</td>
-						<td>${event.eventdate}</td>							
+						<td>${event.attendees.size()}/${event.maxCapacity}</td>
+						<td>${event.eventDate}</td>							
 					</tr>
-					</c:out>
-					</c:when>
+					</c:forEach>
 				</tbody>
 		</table>
 	</div>
@@ -58,27 +56,27 @@
 					<th>Action</th>
 				</tr>
 				<tbody>
-					<c:out value="${event}" var ="event">
+					<c:forEach items="${events}" var ="event">
 					<tr>
-						<td><a href= "/event/${event.index}"></a>${event.name}</td>
+						<td><a href= "/events/${event.id}"></a>${event.name}</td>
 						<td>${event.location}</td>
-						<td>${event.attendees.size()}/${event.capacity}</td>
-						<td>${event.eventdate}</td>
-						<td>${event.eventCreator}</td>
+						<td>${event.attendees.size()}/${event.maxCapacity}</td>
+						<td>${event.eventDate}</td>
+						<td>${event.eventCreator.firstName}</td>
 						<td>
 							<c:choose>
 							<c:when test="${event.attendees.contains(user)}">
-							<a href="/event/remove/${user.id}">Remove</a>
+							<a href="/events/remove/${event.id}">Remove</a>
 							</c:when>
-							<c:when test="${event.attendees} = ${event.capacity}">
+							<c:when test="${event.attendees.size() == event.maxCapacity}">
 							Full
 							</c:when>
-							<c:when test="${event.attendees.size()} < ${event.capacity}">
-							<a href="/event/add/${user.id}">Join</a>
+							<c:when test="${event.attendees.size() < event.maxCapacity}">
+							<a href="/events/join/${event.id}">Join</a>
 							</c:when>
 							</c:choose>							
 					</tr>
-					</c:out>
+					</c:forEach>
 				</tbody>
 		</table>
 	</div>

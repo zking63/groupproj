@@ -20,7 +20,7 @@
     </ul>
 </div>
 <h3>Create a New Event</h3>
-	<form:form action="/event/new" method="post" modelAttribute="event">
+	<form:form action="/events/new" method="post" modelAttribute="event">
     <p>
         <form:label path="name">Name:</form:label>
         <form:errors path="name"/>
@@ -35,6 +35,11 @@
         <form:label path="location">Location:</form:label>
         <form:errors path="location"/>
         <form:input path="location"/>
+    </p>
+    <p>
+        <form:label path="maxCapacity">Capacity:</form:label>
+        <form:errors path="maxCapacity"/>
+        <form:input path="maxCapacity"/>
     </p>
     <p>
         <form:label path="eventDate">Date</form:label>
